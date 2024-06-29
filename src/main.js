@@ -22,12 +22,7 @@ function onSubmit(e) {
     .toLowerCase();
 
   if (!searchQuery) {
-    iziToast.info({
-      message: 'Please enter a search query',
-      position: 'topRight',
-      timeout: 2000,
-      progressBar: false,
-    });
+    showInfo('Please enter a search query');
     return;
   }
 
@@ -35,16 +30,9 @@ function onSubmit(e) {
   getImages(searchQuery)
     .then(data => {
       if (!data.hits.length) {
-        iziToast.error({
-          message:
-            'Sorry, there are no images matching your search query. Please try again!',
-          maxWidth: 432,
-          theme: 'dark',
-          backgroundColor: 'red',
-          position: 'topRight',
-          timeout: 2000,
-          progressBar: false,
-        });
+        showError(
+          'Sorry, there are no images matching your search query. Please try again!'
+        );
       } else {
         const markup = createGalleryMarkup(data.hits);
         refs.gallery.innerHTML = markup;
@@ -70,7 +58,26 @@ function onSubmit(e) {
 function showLoader() {
   refs.loader.classList.remove('hidden');
 }
-
 function hideLoader() {
   refs.loader.classList.add('hidden');
+}
+
+function showInfo(message) {
+  iziToast.info({
+    message,
+    position: 'topRight',
+    timeout: 2000,
+    progressBar: false,
+  });
+}
+function showError(message) {
+  iziToast.error({
+    message,
+    maxWidth: 432,
+    theme: 'dark',
+    backgroundColor: 'red',
+    position: 'topRight',
+    timeout: 2000,
+    progressBar: false,
+  });
 }

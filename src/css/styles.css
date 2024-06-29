@@ -156,17 +156,15 @@ button:focus {
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #fff;
+  width: 45px;
+  height: 45px;
+  border: 3px solid #575757;
   border-bottom-color: #ff3d00;
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   animation: rotation 1s linear infinite;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes rotation {
@@ -180,4 +178,5 @@ button:focus {
 
 .hidden {
   display: none;
+  opacity: 0;
 }
