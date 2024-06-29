@@ -46,7 +46,15 @@ function onSubmit(e) {
       }
     })
     .catch(error => {
-      console.log(error);
+      iziToast.error({
+        title: 'Error',
+        message: error,
+        maxWidth: 432,
+        theme: 'dark',
+        backgroundColor: 'red',
+        position: 'center',
+        progressBar: false,
+      });
     })
     .finally(() => {
       hideLoader();
